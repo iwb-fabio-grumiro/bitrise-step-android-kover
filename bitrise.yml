@@ -43,7 +43,7 @@ workflows:
         inputs:
         - gradlew_path: ./gradlew
     - path::./:
-        title: Android Unit Test (monorepo projects in source dir)
+        title: Android Kover (monorepo projects in source dir)
         inputs:
         - is_debug: "true"
         - arguments: --warn
@@ -72,7 +72,7 @@ workflows:
         inputs:
         - gradlew_path: ./gradlew
     - path::./:
-        title: Android Unit Test (monorepo in source dir, with module and variant set)
+        title: Android Kover (monorepo in source dir, with module and variant set)
         inputs:
         - module: app
         - variant: DemoDebug
@@ -99,7 +99,7 @@ workflows:
         inputs:
         - gradlew_path: ./gradlew
     - path::./:
-        title: Android Unit Test (android project & mono repo projects in /tmp dir)
+        title: Android Kover (android project & mono repo projects in /tmp dir)
         inputs:
         - is_debug: "true"
     after-run:
@@ -127,7 +127,7 @@ workflows:
         inputs:
         - gradlew_path: ./gradlew
     - path::./:
-        title: Android Unit Test (android project with build.gradle.kts)
+        title: Android Kover (android project with build.gradle.kts)
         inputs:
         - is_debug: "true"
     after-run:

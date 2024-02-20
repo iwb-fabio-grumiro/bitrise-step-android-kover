@@ -1,6 +1,6 @@
-# Android Unit Test
+# Android Kover
 
-Runs your Android project's unit tests.
+Runs your Android project's code coverage and unit tests.
 
 ## How to use this Step
 

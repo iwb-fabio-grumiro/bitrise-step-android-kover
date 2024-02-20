@@ -120,7 +120,7 @@ func filterVariants(module, variant string, variantsMap gradle.Variants) (gradle
 	filteredVariants := gradle.Variants{}
 	for m, variants := range variantsMap {
 		for _, v := range variants {
-			if strings.ToLower(v) == strings.ToLower(variant+"UnitTest") {
+			if strings.ToLower(v) == strings.ToLower(variant) {
 				filteredVariants[m] = append(filteredVariants[m], v)
 			}
 		}
@@ -172,7 +172,7 @@ func main() {
 		failf("Process config: failed to open project, error: %s", err)
 	}
 
-	testTask := gradleProject.GetTask("test")
+	koverTask := gradleProject.GetTask("koverXmlReport")
 
 	args, err := shellquote.Split(config.Arguments)
 	if err != nil {
@@ -182,7 +182,7 @@ func main() {
 	logger.Infof("Variants:")
 	fmt.Println()
 
-	variants, err := testTask.GetVariants(args...)
+	variants, err := koverTask.GetVariants(args...)
 	if err != nil {
 		failf("Run: failed to fetch variants, error: %s", err)
 	}
@@ -196,9 +196,9 @@ func main() {
 		logger.Printf("%s:", module)
 		for _, variant := range variants {
 			if sliceutil.IsStringInSlice(variant, filteredVariants[module]) {
-				logger.Donef("✓ %s", strings.TrimSuffix(variant, "UnitTest"))
+				logger.Donef("✓ %s", variant)
 			} else {
-				logger.Printf("- %s", strings.TrimSuffix(variant, "UnitTest"))
+				logger.Printf("- %s", variant)
 			}
 		}
 	}
@@ -206,18 +206,18 @@ func main() {
 
 	started := time.Now()
 
-	var testErr error
+	var koverErr error
 
 	logger.Infof("Run test:")
-	testCommand := testTask.GetCommand(filteredVariants, args...)
+	koverCommand := koverTask.GetCommand(filteredVariants, args...)
 
 	fmt.Println()
-	logger.Donef("$ " + testCommand.PrintableCommandArgs())
+	logger.Donef("$ " + koverCommand.PrintableCommandArgs())
 	fmt.Println()
 
-	testErr = testCommand.Run()
-	if testErr != nil {
-		logger.Errorf("Run: test task failed, error: %v", testErr)
+	koverErr = koverCommand.Run()
+	if koverErr != nil {
+		logger.Errorf("Run: test task failed, error: %v", koverErr)
 	}
 	fmt.Println()
 	logger.Infof("Export HTML results:")
@@ -267,7 +267,7 @@ func main() {
 		}
 	}
 
-	if testErr != nil {
+	if koverErr != nil {
 		os.Exit(1)
 	}
 

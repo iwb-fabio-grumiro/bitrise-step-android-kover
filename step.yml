@@ -1,9 +1,9 @@
-title: Android Unit Test
-summary: This step runs your Android project's unit tests.
-description: This step runs your Android project's unit tests.
-website: https://github.com/bitrise-steplib/bitrise-step-android-unit-test
-source_code_url: https://github.com/bitrise-steplib/bitrise-step-android-unit-test
-support_url: https://github.com/bitrise-steplib/bitrise-step-android-unit-test/issues
+title: Android Kover
+summary: This step runs your Android project's code coverage and unit tests.
+description: This step runs your Android project's code coverage and unit tests.
+website: https://github.com/iwb-fabio-grumiro/bitrise-step-android-kover
+source_code_url: https://github.com/iwb-fabio-grumiro/bitrise-step-android-kover
+support_url: https://github.com/iwb-fabio-grumiro/bitrise-step-android-kover/issues
 host_os_tags:
   - osx-10.10
   - ubuntu-16.04
@@ -21,7 +21,7 @@ is_skippable: false
 
 toolkit:
   go:
-    package_name: github.com/bitrise-steplib/bitrise-step-android-unit-test
+    package_name: github.com/iwb-fabio-grumiro/bitrise-step-android-kover
 
 inputs:
   - project_location: $BITRISE_SOURCE_DIR

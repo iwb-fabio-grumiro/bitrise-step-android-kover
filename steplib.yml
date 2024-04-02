@@ -1,0 +1,8 @@
+format_version: 1.0.0
+steplib_source: https://github.com/iwb-fabio-grumiro/bitrise-step-android-kover.git@lib
+assets_download_base_uri: https://bitrise-steplib-collection.s3.amazonaws.com/steps
+download_locations:
+  - type: zip
+    src: https://bitrise-steplib-collection.s3.amazonaws.com/step-archives/
+  - type: git
+    src: source/git

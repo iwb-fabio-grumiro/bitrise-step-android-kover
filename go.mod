@@ -1,4 +1,4 @@
-module github.com/bitrise-steplib/bitrise-step-android-unit-test
+module github.com/iwb-fabio-grumiro/bitrise-step-android-kover
 
 go 1.16
 

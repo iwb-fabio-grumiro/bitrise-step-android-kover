@@ -17,7 +17,7 @@ import (
 	"github.com/bitrise-io/go-utils/log"
 	"github.com/bitrise-io/go-utils/pathutil"
 	"github.com/bitrise-io/go-utils/sliceutil"
-	"github.com/bitrise-steplib/bitrise-step-android-unit-test/testaddon"
+	"github.com/iwb-fabio-grumiro/bitrise-step-android-kover/testaddon"
 	"github.com/kballard/go-shellquote"
 )
 
